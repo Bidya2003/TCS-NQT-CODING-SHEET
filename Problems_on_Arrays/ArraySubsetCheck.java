@@ -1,4 +1,5 @@
 package Problems_on_Arrays;
+// for checking NOT a contiguous subarray...
 
 import java.util.Arrays;
 
@@ -45,5 +46,35 @@ public class ArraySubsetCheck {
         else
             System.out.print("arr1[] is not a subset of arr2[]");
 
+    }
+}
+
+// Code for Checking if arr2 is a Contiguous Subarray of arr1
+
+import java.util.*;
+public class Main{
+    public static boolean isSubset(int[] arr1, int[] arr2){
+        int x = arr1.length;
+        int y = arr2.length;
+        if(y > x){
+            return false;
+        }
+        for(int i=0; i<=x-y; i++){
+            int j;
+            for(j=0; j<y; j++){
+                if(arr1[i+j] != arr2[j]){
+                    break;
+                }
+            }
+            if(j == y){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args){
+        int[] arr1 = {1, 2, 3, 4, 5, 6, 7};
+        int[] arr2 = {2, 3, 4, 7};
+        System.out.println(isSubset(arr1, arr2));
     }
 }
